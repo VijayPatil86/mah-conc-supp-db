@@ -1,0 +1,5 @@
+in Postgres IDE, go to menu Tools > PSQL Tool
+run command,
+	 C:\Program Files\PostgreSQL\18\pgAdmin 4\runtime>pg_dump -U postgres -h localhost -d mah_conc_supp_user_db -s > E:/
+project_development/mahalakshmi-concrete-supplier/code-oct-6/back-end/db_bck/oct_25/db_user_bck.sql
+change db name -d, backup file name -s
