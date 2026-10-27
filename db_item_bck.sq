@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 8dDY0FIaP0wrprAc699MSo3ZLJGhUZuR65b37eqx6iOVvdRagv5a7RNEkVwy1Wi
+\restrict hSDIEZUNKOLRCPzx7sUmJIid5hv8nU2ypSHBtU8jkeuiNbodZmuezIFa3hhlyiW
 
 -- Dumped from database version 18.1
 -- Dumped by pg_dump version 18.1
@@ -61,9 +61,7 @@ ALTER TABLE public.item_suppliers OWNER TO postgres;
 CREATE TABLE public.item_variants (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     item_id uuid NOT NULL,
-    unit_id uuid NOT NULL,
-    pack_size numeric(14,3) NOT NULL,
-    CONSTRAINT item_variants_pack_size_check CHECK ((pack_size > (0)::numeric))
+    unit_id uuid NOT NULL
 );
 
 
@@ -134,11 +132,11 @@ ALTER TABLE ONLY public.units
 
 
 --
--- Name: item_variants uq_variant; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: item_variants uq_item_unit; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.item_variants
-    ADD CONSTRAINT uq_variant UNIQUE (item_id, unit_id, pack_size);
+    ADD CONSTRAINT uq_item_unit UNIQUE (item_id, unit_id);
 
 
 --
@@ -219,5 +217,5 @@ ALTER TABLE ONLY public.item_variants
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 8dDY0FIaP0wrprAc699MSo3ZLJGhUZuR65b37eqx6iOVvdRagv5a7RNEkVwy1Wi
+\unrestrict hSDIEZUNKOLRCPzx7sUmJIid5hv8nU2ypSHBtU8jkeuiNbodZmuezIFa3hhlyiW
 
