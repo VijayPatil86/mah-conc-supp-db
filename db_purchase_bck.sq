@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 7EJPhF4SW0mNTvwpFUbwMmxgi6tY7a1DFEHdpu1S4degIGQDskSYF7G8POZUqbS
+\restrict gvHxJBBzLggmCG5iS0m0DpDFYRqvHuLJhTdOQtjhHfevw14H1qC8HNnbd5lDuZ9
 
 -- Dumped from database version 18.1
 -- Dumped by pg_dump version 18.1
@@ -51,7 +51,10 @@ CREATE TABLE public.purchase_lines (
     quantity numeric(14,3) NOT NULL,
     unit_price numeric(14,4) NOT NULL,
     line_total numeric(16,2) NOT NULL,
-    pack_size numeric(14,3),
+    item_id uuid CONSTRAINT purchase_lines_item_id_not_null1 NOT NULL,
+    CONSTRAINT chk_line_total CHECK ((line_total >= (0)::numeric)),
+    CONSTRAINT chk_price CHECK ((unit_price >= (0)::numeric)),
+    CONSTRAINT chk_qty CHECK ((quantity > (0)::numeric)),
     CONSTRAINT purchase_lines_line_total_check CHECK ((line_total >= (0)::numeric)),
     CONSTRAINT purchase_lines_quantity_check CHECK ((quantity > (0)::numeric)),
     CONSTRAINT purchase_lines_unit_price_check CHECK ((unit_price >= (0)::numeric))
@@ -72,6 +75,7 @@ CREATE TABLE public.purchase_vouchers (
     supplier_name character varying(200) NOT NULL,
     total_amount numeric(16,2) NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
+    CONSTRAINT chk_total CHECK ((total_amount >= (0)::numeric)),
     CONSTRAINT purchase_vouchers_total_amount_check CHECK ((total_amount >= (0)::numeric))
 );
 
@@ -126,6 +130,13 @@ CREATE INDEX idx_pl_item ON public.purchase_lines USING btree (variant_id);
 
 
 --
+-- Name: idx_pl_variant; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX idx_pl_variant ON public.purchase_lines USING btree (variant_id);
+
+
+--
 -- Name: idx_pl_voucher; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -147,6 +158,14 @@ CREATE INDEX idx_pv_supplier ON public.purchase_vouchers USING btree (supplier_i
 
 
 --
+-- Name: purchase_lines fk_line_voucher; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.purchase_lines
+    ADD CONSTRAINT fk_line_voucher FOREIGN KEY (voucher_id) REFERENCES public.purchase_vouchers(id);
+
+
+--
 -- Name: purchase_lines purchase_lines_voucher_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -158,5 +177,5 @@ ALTER TABLE ONLY public.purchase_lines
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 7EJPhF4SW0mNTvwpFUbwMmxgi6tY7a1DFEHdpu1S4degIGQDskSYF7G8POZUqbS
+\unrestrict gvHxJBBzLggmCG5iS0m0DpDFYRqvHuLJhTdOQtjhHfevw14H1qC8HNnbd5lDuZ9
 
