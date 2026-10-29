@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict hSDIEZUNKOLRCPzx7sUmJIid5hv8nU2ypSHBtU8jkeuiNbodZmuezIFa3hhlyiW
+\restrict 5v3okINiW2McbmrPrXo1Hj3IHzpon4PiMBEoUrjufuN50DucL0XW3qfAqQzBjBa
 
 -- Dumped from database version 18.1
 -- Dumped by pg_dump version 18.1
@@ -46,9 +46,7 @@ CREATE TABLE public.item_suppliers (
     supplier_id uuid NOT NULL,
     supplier_name character varying(200) NOT NULL,
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
-    item_variant_id uuid,
-    unit_price numeric(14,4),
-    CONSTRAINT chk_unit_price CHECK ((unit_price >= (0)::numeric))
+    item_variant_id uuid
 );
 
 
@@ -217,5 +215,5 @@ ALTER TABLE ONLY public.item_variants
 -- PostgreSQL database dump complete
 --
 
-\unrestrict hSDIEZUNKOLRCPzx7sUmJIid5hv8nU2ypSHBtU8jkeuiNbodZmuezIFa3hhlyiW
+\unrestrict 5v3okINiW2McbmrPrXo1Hj3IHzpon4PiMBEoUrjufuN50DucL0XW3qfAqQzBjBa
 
