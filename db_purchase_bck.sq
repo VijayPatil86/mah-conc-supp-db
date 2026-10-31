@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict gvHxJBBzLggmCG5iS0m0DpDFYRqvHuLJhTdOQtjhHfevw14H1qC8HNnbd5lDuZ9
+\restrict xZo6ErEP4C7i40BdslbWMinagC7Vkf6I29XRAhP82EOcBalfCphPWfyOD60p8Ha
 
 -- Dumped from database version 18.1
 -- Dumped by pg_dump version 18.1
@@ -51,7 +51,6 @@ CREATE TABLE public.purchase_lines (
     quantity numeric(14,3) NOT NULL,
     unit_price numeric(14,4) NOT NULL,
     line_total numeric(16,2) NOT NULL,
-    item_id uuid CONSTRAINT purchase_lines_item_id_not_null1 NOT NULL,
     CONSTRAINT chk_line_total CHECK ((line_total >= (0)::numeric)),
     CONSTRAINT chk_price CHECK ((unit_price >= (0)::numeric)),
     CONSTRAINT chk_qty CHECK ((quantity > (0)::numeric)),
@@ -177,5 +176,5 @@ ALTER TABLE ONLY public.purchase_lines
 -- PostgreSQL database dump complete
 --
 
-\unrestrict gvHxJBBzLggmCG5iS0m0DpDFYRqvHuLJhTdOQtjhHfevw14H1qC8HNnbd5lDuZ9
+\unrestrict xZo6ErEP4C7i40BdslbWMinagC7Vkf6I29XRAhP82EOcBalfCphPWfyOD60p8Ha
 
