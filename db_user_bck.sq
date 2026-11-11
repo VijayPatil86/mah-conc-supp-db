@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict j0c7hrXfAjSUEutoWLVzdLdSwV4JU5brdU1i9MDcKKbGH0QSatJ22FBQKsxgFTT
+\restrict bv833fBODQnyojBBWwrhbf6QB0q11iifKPEFvcPROn9bxthbnBjQRREduGgvJcn
 
 -- Dumped from database version 18.1
 -- Dumped by pg_dump version 18.1
@@ -47,6 +47,7 @@ CREATE TABLE public.users (
     status character varying(20) DEFAULT 'active'::character varying NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     last_login_at timestamp with time zone,
+    is_owner boolean DEFAULT false NOT NULL,
     CONSTRAINT chk_users_status CHECK (((status)::text = ANY ((ARRAY['active'::character varying, 'suspended'::character varying, 'blocked'::character varying, 'deleted'::character varying])::text[])))
 );
 
@@ -70,8 +71,15 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- Name: uq_users_single_owner; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX uq_users_single_owner ON public.users USING btree (is_owner) WHERE is_owner;
+
+
+--
 -- PostgreSQL database dump complete
 --
 
-\unrestrict j0c7hrXfAjSUEutoWLVzdLdSwV4JU5brdU1i9MDcKKbGH0QSatJ22FBQKsxgFTT
+\unrestrict bv833fBODQnyojBBWwrhbf6QB0q11iifKPEFvcPROn9bxthbnBjQRREduGgvJcn
 
