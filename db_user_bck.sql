@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict vrk50WioxBQl7vvdclxkmzM9RoaLElEmLZHGZar8Mxb3zCynmuvkf5I9WBHc8TX
+\restrict hMj5gnkUE0BRUSf8BOM3yvg6EbwTD9jjwmCOGpflt3fSBAGQRSRFKBW0fR8HECu
 
 -- Dumped from database version 18.1
 -- Dumped by pg_dump version 18.1
@@ -81,13 +81,13 @@ CREATE UNIQUE INDEX uq_users_single_owner ON public.users USING btree (is_owner)
 -- PostgreSQL database dump complete
 --
 
-\unrestrict vrk50WioxBQl7vvdclxkmzM9RoaLElEmLZHGZar8Mxb3zCynmuvkf5I9WBHc8TX
+\unrestrict hMj5gnkUE0BRUSf8BOM3yvg6EbwTD9jjwmCOGpflt3fSBAGQRSRFKBW0fR8HECu
 
 --
 -- PostgreSQL database dump
 --
 
-\restrict hI6rCteabqKbvpQpkHtzurKAE8HESboWtFIOfrNqTW0yFYaxfQL4kRIdFFTj7Wg
+\restrict GQITke1tcnEMapm6uB7qMqbQufegpMc6Jk8e5yiOW1ur8HSZcj7HKHhB7V6vzzl
 
 -- Dumped from database version 18.1
 -- Dumped by pg_dump version 18.1
@@ -109,7 +109,8 @@ SET row_security = off;
 --
 
 COPY public.users (id, email, status, created_at, last_login_at, is_owner) FROM stdin;
-c93e3cf7-05ff-48ec-a33e-9b9fb55af14b	vijipa090386@gmail.com	active	2026-10-07 10:12:09.548425+05:30	\N	t
+c93e3cf7-05ff-48ec-a33e-9b9fb55af14b	mahalakshmi.conc.suppliers.owner@gmail.com	active	2026-10-07 10:12:09.548425+05:30	\N	t
+cdc9df4a-b195-401d-90ff-099532c0b3aa	mahalakshmi.conc.suppliers.user@gmail.com	active	2026-11-13 16:30:16.4614+05:30	\N	f
 \.
 
 
@@ -117,5 +118,5 @@ c93e3cf7-05ff-48ec-a33e-9b9fb55af14b	vijipa090386@gmail.com	active	2026-10-07 10
 -- PostgreSQL database dump complete
 --
 
-\unrestrict hI6rCteabqKbvpQpkHtzurKAE8HESboWtFIOfrNqTW0yFYaxfQL4kRIdFFTj7Wg
+\unrestrict GQITke1tcnEMapm6uB7qMqbQufegpMc6Jk8e5yiOW1ur8HSZcj7HKHhB7V6vzzl
 
